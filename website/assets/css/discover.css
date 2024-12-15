@@ -1,0 +1,37 @@
+  @import url(./variable.css);
+
+  .options-container {
+    background: var(--dark);
+    color: var(--bg);
+    width: 100%;
+    transition: all 0.5s;
+    border-radius: 8px;
+    overflow: hidden;
+  
+    opacity: 0;
+    max-height: 0;
+  }
+  .options-container.active {
+    max-height: 240px;
+    border: 1px solid var(--dark);
+    box-shadow: var(--boxShadow);
+    opacity: 1;
+    overflow-y: scroll;
+  }
+  .options-container::-webkit-scrollbar {
+    width: 8px;
+    background: var(--light);
+    border-radius: 0 8px 8px 0;
+  }
+  .options-container::-webkit-scrollbar-thumb {
+    background: var(--mid);
+    border-radius: 0 8px 8px 0;
+  }
+  .option {
+    padding: 12px 24px;
+    cursor: pointer;
+  }
+  .option:hover {
+    background: var(--light-gray);
+    color: var(--dark);
+  }

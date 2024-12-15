@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/png">
+  <title>CineFlix</title>
+  <!-- - custom css link -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/discover.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/media_query.css') }}">
+  <!-- - google font link -->
+  <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
+</head>
+<body>
+  <!-- - main container -->
+  <div class="container">
+    <!--
+      - #HEADER SECTION
+    -->
+    <header class="">
+      <div class="navbar">
+        <!--
+          - menu button for small screen
+        -->
+        <button class="navbar-menu-btn">
+          <span class="one"></span>
+          <span class="two"></span>
+          <span class="three"></span>
+        </button>
+        <a href="{{ url_for('home.render') }}" class="navbar-brand">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="">
+        </a>
+        <!--
+          - navbar navigation
+        -->
+        <nav class="">
+          <ul class="navbar-nav">
+            <li> <a href="{{ url_for('home.render') }}" class="navbar-link">Home</a> </li>
+            <li> 
+              <a href="javascript:void(0);" class="navbar-link" onclick="toggleDropdown()">Category</a>
+              <ul class="dropdown-content categories-dropdown">              
+                {% for category in categories %}
+                  <li><a href="">{{ category.name }}</a></li>
+                {% endfor %}
+            </ul>
+            </li>
+            <li> <a href="discover" class="navbar-link">Discover</a> </li>
+          </ul>
+        </nav>
+        <!--
+          - search and sign-in
+        -->
+        <div class="navbar-actions">
+          <form action="#" class="navbar-form">
+            <input type="text" name="search" placeholder="I'm looking for..." class="navbar-form-search">
+            <button class="navbar-form-btn">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+            <button class="navbar-form-close">
+              <ion-icon name="close-circle-outline"></ion-icon>
+            </button>
+          </form>
+          <!--
+            - search button for small screen
+          -->
+          <button class="navbar-search-btn">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+          <a class="navbar-signin">
+            <span id="loginButton">Sign in</span>
+            <ion-icon name="log-in-outline"></ion-icon>
+            <div id="loginPopup">
+              <form>
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit"> Log In </button>
+              </form>
+            </div>
+          </a>
+        </div>
+      </div>
+    </header>
+    <!--
+      - MAIN SECTION
+    -->
+    <main>
+      <!--
+        - #BANNER SECTION
+      -->
+      <section class="movies dropdown-list">
+        <h1>Pick a movie</h1>
+        <input type="text" name="search" placeholder="I'm looking for..." id="searchInput" class="selected">
+        <ul id="dropdownListMovies" class="options-container">
+        </ul>
+        <button class="load-more recommend-button">RECOMMEND</button>
+      </section>
+      <!--
+        - #MOVIES SECTION
+      -->
+      <section class="movies">
+        <!--
+          - filter bar
+        -->
+        <div class="filter-bar">
+          <h1>Best Recommended Movies</h1>
+        </div>
+        <div class="movies-grid" id="movie-container-tags"></div>
+        <div class="filter-bar">
+          <h1>Movies that are based on genres</h1>
+        </div>
+        <div class="movies-grid" id="movie-container-genres"></div>
+        <div class="filter-bar">
+          <h1>Movies that are based on keywords</h1>
+        </div>
+        <div class="movies-grid" id="movie-container-keywords"></div>
+        <div class="filter-bar">
+          <h1>Movies that are based on casts</h1>
+        </div>
+        <div class="movies-grid" id="movie-container-casts"></div>
+        <div class="filter-bar">
+          <h1>Movies that are based on production company</h1>
+        </div>
+        <div class="movies-grid" id="movie-container-production-company"></div>
+        <!--
+          - load more button
+        
+        <button class="load-more">LOAD MORE</button>
+        -->
+      </section>
+      </main>
+    <!--
+      - FOOTER SECTION
+    -->
+    <footer></footer>
+  </div>
+  <!-- - custom js link -->
+  <script src="/assets/js/common.js"></script>
+  <script src="/assets/js/discover.js"></script>
+  <!-- - ionicon link -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
